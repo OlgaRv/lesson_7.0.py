@@ -33,7 +33,8 @@ class Bird(Animal):
     def fly(self):
         print(f"{self.name} летает")
     def get_info(self):
-        print(f"Это {self.name}, ему {self.age} лет, у него {self.color} цвет перьев")
+        with open('zoo.txt', 'a', encoding="UTF-8") as f:
+            print(f"Это {self.name}, ему {self.age} лет, у него {self.color} цвет перьев", file=f)
 class Mammal(Animal):
     def __init__(self, name, age, legs):
         super().__init__(name, age)
@@ -45,7 +46,8 @@ class Mammal(Animal):
     def lactate(self):
         print(f"{self.name} вскармливает детенышей молоком")
     def get_info(self):
-        print(f"Это {self.name}, ему {self.age} лет, у него {self.legs} ноги")
+        with open('zoo.txt', 'a', encoding="UTF-8") as f:
+            print(f"Это {self.name}, ему {self.age} лет, у него {self.legs} ноги", file=f)
 
 class Reptile(Animal):
     def __init__(self, name, age, lenght):
@@ -59,14 +61,16 @@ class Reptile(Animal):
     def lay_eggs(self):
         print(f"{self.name} размножается откладыванием яиц")
     def get_info(self):
-        print(f"Это {self.name}, ему {self.age} лет, его длина {self.lenght} метров")
+        with open('zoo.txt', 'a', encoding="UTF-8") as f:
+            print(f"Это {self.name}, ему {self.age} лет, его длина {self.lenght} метров", file=f)
 
 class ZooKeeper():
     def __init__(self, name):
         self.name = name
         self.status = "Keeper"
     def feed_animal(self, name):
-        print(f"{self.name} кормит зверей и птиц")
+        with open('zoo.txt', 'a', encoding="UTF-8") as f:
+            print(f"{self.name} кормит зверей и птиц", file=f)
 
     def get_status(self):
         return self.status
@@ -76,7 +80,8 @@ class Veterinarian():
           self.name = name
           self.status = "Veterinar"
       def heal_animal(self, name):
-        print(f"{self.name} лечит животных")
+        with open('zoo.txt', 'a', encoding="UTF-8") as f:
+            print(f"{self.name} лечит животных", file=f)
 
       def get_status(self):
         return self.status
@@ -103,8 +108,6 @@ class Zoo():
                 print(person.feed_animal(person.name))
             else:
                 print(person.heal_animal(person.name))
-
-
 
 bird = Bird("фламинго", 3 , "розовый")
 bird.make_sound()
